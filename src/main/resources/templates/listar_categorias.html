@@ -17,7 +17,9 @@
     <tr th:each="cat : ${categorias}">
         <td th:text="${cat.nome}"></td>
         <td th:text="${cat.situacao}"></td>
-        <td><a th:href="|exibirCategoria?codigo=${cat.codigo}|">Alterar</a></td>
+        <td><a th:href="|exibirCategoria?codigo=${cat.codigo}|">Alterar</a>
+            <a th:href="|excluirCategoria?codigo=${cat.codigo}|">Excluir</a>
+        </td>
     </tr>
 </table>
 </body>
