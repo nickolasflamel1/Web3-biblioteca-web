@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class CategoriaController {
@@ -38,7 +39,7 @@ public class CategoriaController {
     }
 
     @GetMapping("/categoria")
-    public String exibirCategoria() {
+    public String exibirCategoria(Categoria categoria) {
         return "cadastrar_categoria";
     }
 
@@ -52,8 +53,16 @@ public class CategoriaController {
     public String salvarCategoriaObj(Categoria categoria) {
         this.lista.add(categoria);
         System.out.println(categoria);
+
         this.categoriaDAO.save(categoria);
+
         return "index";
+    }
+    @GetMapping("/exibirCategoria")
+    public String exibirCategoria(Integer codigo, Model model) {
+        Optional<Categoria> cat = Optional.of(this.categoriaDAO.getById(codigo));
+        model.addAttribute("categoria", cat);
+        return "cadastrar_categoria";
     }
 
 }
