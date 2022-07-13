@@ -9,16 +9,15 @@
 
 <body>
 <h3>Cadastro de Categorias</h3>
-<form action="/salvarCategoriaObj" method="post">
-    Código: <input type="number" name="codigo"> <br/>
-    Nome: <input type="text" name="nome"><br/>
+<form action="/salvarCategoriaObj" method="post" th:object="${categoria}">
+    Código: <input type="number" th:field="*{codigo}"> <br/>
+    Nome: <input type="text" th:field="*{nome}"> <br/>
     Situação:
-    <SELECT name="situacao">
+    <SELECT th:field="*{situacao}">
         <option th:each="sit : ${enum_situacao}"
                 th:value="${sit}"
                 th:text="${sit}"
         >
-
     </SELECT>
     <button type="submit">Salvar</button>
 </form>
