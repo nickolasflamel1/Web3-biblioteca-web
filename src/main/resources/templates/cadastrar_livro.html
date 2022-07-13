@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca - Livros</title>
+</head>
+
+<body>
+<h3>Cadastro de Livros</h3>
+<form action="/salvarLivro" method="post">
+    Código: <input type="number" name="codigo"><br/>
+    Título: <input type="text" name="titulo"><br/>
+    Autores: <input type="text" name="autores"><br/>
+    Categoria:
+    <SELECT name="categoria">
+        <option th:each="cat : ${lista_categ}"
+                th:value="${cat.codigo}"
+                th:text="${cat.nome}"
+        >
+    </SELECT>
+    <button type="submit">Salvar</button>
+</form>
+<hr/>
+<table>
+    <tr>
+        <th>Título</th>
+        <th>Autores</th>
+        <th>Categoria</th>
+    </tr>
+    <tr th:each="liv : ${lista_livros}">
+        <td th:text="${liv.titulo}">
+        <td th:text="${liv.autores}">
+        <td th:text="${liv.categoria.nome}">
+    </tr>
+
+</table>
+</body>
+
+</html>

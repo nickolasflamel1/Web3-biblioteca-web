@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca - Categorias</title>
+</head>
+
+<body>
+<h3>Cadastro de Categorias</h3>
+<form action="/salvarCategoriaObj" method="post">
+    Código: <input type="number" name="codigo"> <br/>
+    Nome: <input type="text" name="nome"><br/>
+    Situação:
+    <SELECT name="situacao">
+        <option th:each="sit : ${enum_situacao}"
+                th:value="${sit}"
+                th:text="${sit}"
+        >
+
+    </SELECT>
+    <button type="submit">Salvar</button>
+</form>
+</body>
+
+</html>
