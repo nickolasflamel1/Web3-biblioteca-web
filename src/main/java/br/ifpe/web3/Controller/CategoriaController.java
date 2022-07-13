@@ -56,7 +56,7 @@ public class CategoriaController {
 
         this.categoriaDAO.save(categoria);
 
-        return "index";
+        return "redirect:/listarCategorias";
     }
     @GetMapping("/exibirCategoria")
     public String exibirCategoria(Integer codigo, Model model) {
@@ -64,5 +64,12 @@ public class CategoriaController {
         model.addAttribute("categoria", cat);
         return "cadastrar_categoria";
     }
+
+    @GetMapping("/excluirCategoria")
+    public String excluirCategoria(Integer codigo){
+        this.categoriaDAO.deleteById(codigo);
+        return "redirect:/listarCategorias";
+    }
+
 
 }
